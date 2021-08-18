@@ -4,10 +4,14 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'];
 $content="From: $name \n Message: $message";
-$recipient = "emediongfrancis@gmail.com";
+$to = "emediongfrancis@gmail.com";
 $subject = "Contact Form";
 $header = "From: $email \r\n";
-mail($recipient, $subject, $content, $header) or die("Message not sent, please try again later.");
-echo "Mail received. Thank You!";
-
+ if ($_POST['submit']) {
+        if (mail ($to, $subject, $content, $header)) {
+            echo '<p>Your message has been sent successfully!</p>';
+        } else {
+            echo '<p>Something went wrong, please go back and try again!</p>';
+        }
+    }
 ?>
