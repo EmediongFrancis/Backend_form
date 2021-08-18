@@ -1,0 +1,22 @@
+.body {
+    background-color: #75a3a3;
+  }
+  .round {
+    border-radius: 50%;
+    border: 3px solid #b33c00;
+  }
+  .a {
+    color: red;
+  }
+  .a:link{
+    color: red;
+  }
+  .a:visited{
+    color: blue;
+  }
+  .a:hover{
+    color: white;
+  }
+  .a:active{
+    color: green;
+  }
