@@ -12,6 +12,7 @@ require './vendor/autoload.php';
 $mail = new PHPMailer;
 
     $mail->IsSMTP();  // telling the class to use SMTP
+    $mail->SMTPDebug = 2;
     $mail->SMTPAuth   = true; // SMTP authentication
     $mail->Host       = "smtp.gmail.com"; // SMTP server
     $mail->SMTPSecure = 'tls';
