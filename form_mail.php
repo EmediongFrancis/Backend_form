@@ -7,14 +7,15 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 
 $mail = new PHPMailer();
 
     $mail->IsSMTP();  // telling the class to use SMTP
     $mail->SMTPAuth   = true; // SMTP authentication
     $mail->Host       = "smtp.gmail.com"; // SMTP server
-    $mail->Port       = 465; // SMTP Port
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587; // SMTP Port
     $mail->Username   = "emediongfrancis@gmail.com"; // SMTP account username
     $mail->Password   = "tapadawaldma123987";        // SMTP account password
 
