@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require './vendor/autoload.php';
 
-$mail = new PHPMailer();
+$mail = new PHPMailer;
 
     $mail->IsSMTP();  // telling the class to use SMTP
     $mail->SMTPAuth   = true; // SMTP authentication
