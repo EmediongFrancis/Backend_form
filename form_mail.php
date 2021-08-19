@@ -17,17 +17,17 @@ try {
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    // $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'emediongfrancis@gmail.com';                     //SMTP username
     $mail->Password   = 'tapadawaldma123987';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
-    $content="From: $name \n Message: $message";
+    $content = "Name: " + $name + " Message: " + $message;
     $to = "emediongfrancis@gmail.com";
     $subject = "Contact Form";
 
@@ -36,7 +36,7 @@ try {
     $mail->addAddress($to, 'Emediong Francis');
 
     //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
+    // $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = $subject;
     $mail->Body    = $content;
 
