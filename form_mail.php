@@ -35,9 +35,9 @@ $mail = new PHPMailer;
     $mail->isHTML(true);
     $mail->SetFrom($email, $name); // FROM
 
-    $mail->AddAddress('emediongfrancis@gmail.com', 'Emediong Francis'); // recipient email
+    $mail->AddAddress('emediongfrancis@gmail.com'); // recipient email
 
-    $mail->Subject    = $subject; // email subject
+    $mail->Subject    = ("$email ($subject)"); // email subject
     $mail->Body       = $message;
 
     if(!$mail->Send()) {
