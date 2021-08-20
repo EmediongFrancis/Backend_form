@@ -6,6 +6,17 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+if(isset($_POST['name']) && isset($_POST['email'])){
+
+$name = $_POST['name'];
+$email = $_POST['email'];
+$message = $_POST['message'];
+$content="From: $name \n Message: $message";
+$recipient = "emediongfrancis@gmail.com";
+$subject = "Contact Form";
+$header = "From: $email \r\n";
+
+
 //Load Composer's autoloader
 require './vendor/autoload.php';
 
@@ -20,30 +31,21 @@ $mail = new PHPMailer;
     $mail->Username   = "emediongfrancis@gmail.com"; // SMTP account username
     $mail->Password   = "wytzpavfcmfzefyb";        // SMTP account password
 
-    echo $_POST;
 
-      $name = $_POST['name'];
-      $email = $_POST['email'];
-      $message = $_POST['message'];
-      $content="From: $name \n Message: $message";
-      $recipient = "emediongfrancis@gmail.com";
-      $subject = "Contact Form";
-      $header = "From: $email \r\n";
-      mail($recipient, $subject, $content, $header) or die("Message not sent, please try again later.");
-      echo "Mail received. Thank You!";
-
-    // $mail->SetFrom('$email', '$name'); // FROM
+    $mail->isHTML(true);
+    $mail->SetFrom($email, $name); // FROM
 
     $mail->AddAddress('emediongfrancis@gmail.com', 'Emediong Francis'); // recipient email
 
-    $mail->Subject    = "From: $name \n"; // email subject
-    $mail->Body       = "$message";
+    $mail->Subject    = $subject; // email subject
+    $mail->Body       = $message;
 
-    // if(!$mail->Send()) {
-      // echo 'Message was not sent, please try again.';
-      // echo 'Mailer error: ' . $mail->ErrorInfo;
-    // } else {
-      // echo 'Message has been sent successfully.';
-    // }
+    if(!$mail->Send()) {
+      echo 'Message was not sent, please try again.';
+      echo 'Mailer error: ' . $mail->ErrorInfo;
+    } else {
+      echo 'Message has been sent successfully.';
+    }
+  }
 
-    ?>
+?>
