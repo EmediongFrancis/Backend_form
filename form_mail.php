@@ -20,16 +20,30 @@ $mail = new PHPMailer;
     $mail->Username   = "emediongfrancis@gmail.com"; // SMTP account username
     $mail->Password   = "wytzpavfcmfzefyb";        // SMTP account password
 
-    $mail->SetFrom('emediongfrancis@gmail.com', 'Emediong Francis'); // FROM
+    echo $_POST;
+
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $message = $_POST['message'];
+      $content="From: $name \n Message: $message";
+      $recipient = "emediongfrancis@gmail.com";
+      $subject = "Contact Form";
+      $header = "From: $email \r\n";
+      mail($recipient, $subject, $content, $header) or die("Message not sent, please try again later.");
+      echo "Mail received. Thank You!";
+
+    // $mail->SetFrom('$email', '$name'); // FROM
 
     $mail->AddAddress('emediongfrancis@gmail.com', 'Emediong Francis'); // recipient email
 
-    $mail->Subject    = "First SMTP Message"; // email subject
-    $mail->Body       = "Hi! \n\n This is my first e-mail sent through Google SMTP using PHPMailer.";
+    $mail->Subject    = "From: $name \n"; // email subject
+    $mail->Body       = "$message";
 
-    if(!$mail->Send()) {
-      echo 'Message was not sent, please try again.';
-      echo 'Mailer error: ' . $mail->ErrorInfo;
-    } else {
-      echo 'Message has been sent successfully.';
-    }
+    // if(!$mail->Send()) {
+      // echo 'Message was not sent, please try again.';
+      // echo 'Mailer error: ' . $mail->ErrorInfo;
+    // } else {
+      // echo 'Message has been sent successfully.';
+    // }
+
+    ?>
