@@ -41,10 +41,30 @@ $mail = new PHPMailer;
     $mail->Body       = $message;
 
     if(!$mail->Send()) {
+
       echo 'Message was not sent, please try again.';
       echo 'Mailer error: ' . $mail->ErrorInfo;
     } else {
       echo 'Message has been sent successfully.';
+
+      $autoRespond = new PHPMailer();
+
+      $autoRespond->IsSMTP();
+      $autoRespond->CharSet    = 'UTF-8';
+      $autoRespond->SMTPDebug  = 0;
+      $autoRespond->SMTPAuth   = true;
+      $autoRespond->SMTPSecure = "tls";
+      $autoRespond->Port       = 587;
+      $autoRespond->Username   = "emediongfrancis@gmail.com";
+      $autoRespond->Password   = "wytzpavfcmfzefyb";
+      $autoRespond->Host       = "smtp.gmail.com";
+   
+      $autoRespond->setFrom('emediongfrancis@gmail.com', 'Emediong Francis');
+      $autoRespond->addAddress($email);
+      $autoRespond->Subject = "Autorepsonse: Your submission has been received."; 
+      $autoRespond->Body = "Your submission has been received. You will be contacted shortly.";
+   
+      $autoRespond->Send(); 
     }
   }
 
