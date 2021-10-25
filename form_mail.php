@@ -16,7 +16,6 @@ $recipient = "emediongfrancis@gmail.com";
 $subject = "Contact Form";
 $header = "From: $email \r\n";
 
-
 //Load Composer's autoloader
 require './vendor/autoload.php';
 
@@ -31,7 +30,7 @@ $mail = new PHPMailer;
     $mail->Username   = "emediongfrancis@gmail.com"; // SMTP account username
     $mail->Password   = "wytzpavfcmfzefyb";        // SMTP account password
     
-    
+
     $mail->isHTML(true);
     $mail->SetFrom($email, $name); // FROM
 
