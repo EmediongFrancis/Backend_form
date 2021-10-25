@@ -30,7 +30,7 @@ $mail = new PHPMailer;
     $mail->Port       = 587; // SMTP Port
     $mail->Username   = "emediongfrancis@gmail.com"; // SMTP account username
     $mail->Password   = "wytzpavfcmfzefyb";        // SMTP account password
-
+    
 
     $mail->isHTML(true);
     $mail->SetFrom($email, $name); // FROM
