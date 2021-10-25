@@ -31,7 +31,7 @@ $mail = new PHPMailer;
     $mail->Username   = "emediongfrancis@gmail.com"; // SMTP account username
     $mail->Password   = "wytzpavfcmfzefyb";        // SMTP account password
     
-
+    
     $mail->isHTML(true);
     $mail->SetFrom($email, $name); // FROM
 
