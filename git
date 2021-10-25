@@ -3,7 +3,7 @@
 # Gets CL argument and passes it as commit message. For more than one word, wrap them in single quotes.
 message="$1"
 
-# Use current date and time as commit message if commit message is not passed.
+# Uses current date and time as commit message if commit message is not passed.
 if [[ -z "${message// }" ]]
     then
         message=$(date '+%Y-%m-%d %H:%M:%S')
@@ -13,11 +13,11 @@ fi
 git add .
 echo "Staged all files."
 
-# Use commit message.
+# Uses commit message.
 git commit -m "$message"
 echo "Added commit with message: '$message'"
 
-# Gets current branch and pushes to it .
+# Gets current branch and pushes to it. 
 current_branch=$(git branch | sed -ne 's/^\* \(.*\)/\1/p')
 git push origin "$current_branch"
 echo "Pushed changes to '$current_branch' branch."
